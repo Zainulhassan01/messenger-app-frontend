@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:3000/api';
+import SignupForm from './components/Signup';
+import LogInForm from './components/Login';
 
 function App() {
   return (
@@ -17,15 +16,15 @@ function App() {
               <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/signup">Signup</Link>
             </li>
           </ul>
         </nav>
 
         <Routes>
           <Route exact path="/" element={<h1>Welcome to the Home Page</h1>} />
-          <Route path="/login" element={<button>Login</button>} />
-          <Route path="/register" element = {<button>Register</button>} />
+          <Route path="/login" element={<LogInForm/>} />
+          <Route path="/signup" element = {<SignupForm/>} />
         </Routes>
       </div>
     </Router>
