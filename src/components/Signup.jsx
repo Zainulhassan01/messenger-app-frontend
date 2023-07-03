@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const API_BASE_URL = 'http://localhost:3000/api';
 
@@ -7,6 +8,7 @@ const SignupForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -20,7 +22,8 @@ const SignupForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleRegistration = async () => {
+  const handleRegistration = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(`${API_BASE_URL}/register`, {
         name: username,
@@ -31,6 +34,7 @@ const SignupForm = () => {
     } catch (error) {
       console.error(error);
     }
+    navigate('/welcome');
   };
 
   return (

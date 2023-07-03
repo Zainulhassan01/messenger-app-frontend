@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const API_BASE_URL = 'http://localhost:3000/api';
 
@@ -6,6 +7,8 @@ const API_BASE_URL = 'http://localhost:3000/api';
 const LogInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -15,7 +18,8 @@ const LogInForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleRegistration = async () => {
+  const handleLoging = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(`${API_BASE_URL}/login`, {
         email: email,
@@ -25,12 +29,13 @@ const LogInForm = () => {
     } catch (error) {
       console.error(error);
     }
+    navigate('/welcome');
   };
 
   return (
     <div>
       <h2>LogIn</h2>
-      <form onSubmit={handleRegistration}>
+      <form onSubmit={handleLoging}>
         <div>
           <label htmlFor="email">Email</label>
           <input
