@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SignupForm from './components/Signup';
 import LogInForm from './components/Login';
-import Welcome from './components/Welcome';
+import ChatPage from './components/ChatPage';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route exact path="/welcome" element={<Welcome/>} />
+          <Route exact path="/welcome" element={<ChatPage/>} />
           <Route path="/login" element={<LogInForm/>} />
           <Route path="/signup" element = {<SignupForm/>} />
         </Routes>
